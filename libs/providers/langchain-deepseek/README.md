@@ -35,6 +35,45 @@ const res = await model.invoke([
 ]);
 ```
 
+## Structured output
+
+Use `withStructuredOutput` to get typed objects back from the model. Under the
+hood this binds a function tool and forces the model to call it, so the reply
+always matches your schema:
+
+```typescript
+import { ChatDeepSeek } from "@langchain/deepseek";
+import { z } from "zod";
+
+const personSchema = z.object({
+  name: z.string(),
+  age: z.number(),
+  occupation: z.string(),
+});
+
+const model = new ChatDeepSeek({
+  model: "deepseek-v4-pro",
+  temperature: 0,
+});
+
+const structured = model.withStructuredOutput(personSchema, {
+  name: "extract_person",
+});
+
+const person = await structured.invoke(
+  "Ada Lovelace was a 36 year old mathematician."
+);
+// { name: "Ada Lovelace", age: 36, occupation: "mathematician" }
+```
+
+You can also force a specific tool yourself with `tool_choice`:
+
+```typescript
+const withTool = model.bindTools([extractPersonTool], {
+  tool_choice: { type: "function", function: { name: "extract_person" } },
+});
+```
+
 ## Development
 
 To develop the `@langchain/deepseek` package, you'll need to follow these instructions:
