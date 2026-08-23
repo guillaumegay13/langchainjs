@@ -1,0 +1,21 @@
+libs/providers/langchain-deepseek/README.md
+  s_f29d7cf2e82da9::t_ec88aa1fbc3565 38-76
+libs/providers/langchain-deepseek/src/tests/chat_models_structured_output.int.test.ts
+  s_f29d7cf2e82da9::t_52c73dddaacae2 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "021f94cb62d8964b96e3ad1c2b240ca700ac0806",
+  "prompts": {},
+  "sessions": {
+    "s_f29d7cf2e82da9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b4165c36-90d9-4d6b-9d04-bae79b307ff1",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
